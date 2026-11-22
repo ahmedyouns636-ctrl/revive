@@ -1,0 +1,1291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>REVIVE — Mid Is Over, And The Journey Has Just Begun</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Cairo:wght@500;700;800;900&family=Cinzel:wght@700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-void: #090505;
+      --bg-panel: rgba(18, 10, 9, 0.88);
+      --sky-orange: #c94a16;
+      --ember: #ff772b;
+      --ember-glow: #ff9a44;
+      --laser-red: #ff243d;
+      --parchment-light: #ecd7b7;
+      --parchment-dark: #cfa876;
+      --ink-dark: #231610;
+      --ink-red: #a91616;
+      --text-cream: #f7ebdc;
+      --text-muted: #c9b29c;
+      --border-ember: rgba(255, 119, 43, 0.35);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background:
+        radial-gradient(ellipse at 50% -5%, rgba(217, 79, 22, 0.72) 0%, rgba(122, 34, 12, 0.48) 38%, rgba(14, 7, 6, 0.96) 76%, #070404 100%),
+        #070404;
+      color: var(--text-cream);
+      font-family: 'Inter', 'Cairo', sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+      padding: 24px 14px 56px;
+    }
+
+    /* Alice in Borderland Vertical Laser Beams */
+    .laser-backdrop {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background-image:
+        linear-gradient(90deg, transparent 0%, transparent 11%, rgba(255, 36, 61, 0.14) 11.2%, transparent 11.6%),
+        linear-gradient(90deg, transparent 0%, transparent 33%, rgba(255, 119, 43, 0.08) 33.1%, transparent 33.4%),
+        linear-gradient(90deg, transparent 0%, transparent 68%, rgba(255, 36, 61, 0.12) 68.2%, transparent 68.5%),
+        linear-gradient(90deg, transparent 0%, transparent 89%, rgba(255, 36, 61, 0.16) 89.2%, transparent 89.6%);
+    }
+
+    /* Smoky clouds + jagged mountain silhouette */
+    .mountain-bg {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 36vh;
+      opacity: 0.25;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    #confettiCanvas {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 99;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .ar {
+      font-family: 'Cairo', sans-serif;
+      direction: rtl;
+    }
+
+    /* ================= HERO SECTION (MATCHING POSTER) ================= */
+    .hero {
+      text-align: center;
+      padding: 10px 8px 26px;
+    }
+
+    .arena-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'Cinzel', serif;
+      font-size: 0.76rem;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--parchment-light);
+      background: rgba(255, 36, 61, 0.14);
+      border: 1px solid rgba(255, 36, 61, 0.55);
+      padding: 6px 18px;
+      border-radius: 999px;
+      box-shadow: 0 0 18px rgba(255, 36, 61, 0.25);
+      margin-bottom: 14px;
+    }
+
+    .hero-headline {
+      font-family: 'Anton', sans-serif;
+      font-size: clamp(2rem, 6vw, 3.35rem);
+      line-height: 1.06;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      background: linear-gradient(180deg, #fff1dc 0%, #ffb067 52%, #e65c1c 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 4px 18px rgba(0, 0, 0, 0.75));
+      max-width: 780px;
+      margin: 0 auto;
+    }
+
+    .hero-slogan {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(0.88rem, 2.5vw, 1.08rem);
+      letter-spacing: 3px;
+      color: var(--ember-glow);
+      margin-top: 10px;
+      text-transform: uppercase;
+    }
+
+    /* Centerpiece Artwork Recreating Your Poster */
+    .poster-art-wrap {
+      margin: 22px auto 18px;
+      max-width: 430px;
+      position: relative;
+    }
+
+    .poster-svg {
+      width: 100%;
+      height: auto;
+      filter: drop-shadow(0 18px 36px rgba(0, 0, 0, 0.75));
+    }
+
+    .support-message {
+      max-width: 720px;
+      margin: 14px auto 0;
+      background: rgba(24, 12, 10, 0.85);
+      border: 1px solid var(--border-ember);
+      border-left: 3px solid var(--laser-red);
+      border-radius: 12px;
+      padding: 16px 20px;
+      text-align: left;
+      line-height: 1.65;
+      color: #f3e4d3;
+      font-size: 0.96rem;
+    }
+
+    .support-message .ar-sub {
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px dashed rgba(255, 119, 43, 0.25);
+      color: #ffd4a8;
+      font-size: 0.96rem;
+      text-align: right;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    /* ================= BUTTONS ================= */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 13px 24px;
+      border-radius: 10px;
+      border: none;
+      font-family: 'Cinzel', 'Cairo', sans-serif;
+      font-weight: 800;
+      font-size: 0.92rem;
+      letter-spacing: 1px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform 0.15s, box-shadow 0.2s, background 0.2s;
+    }
+
+    .btn:active { transform: scale(0.97); }
+    .btn:disabled { opacity: 0.65; cursor: not-allowed; }
+
+    .btn-ember {
+      background: linear-gradient(135deg, #ff772b 0%, #d92638 100%);
+      color: #fff;
+      box-shadow: 0 0 24px rgba(255, 65, 54, 0.45);
+    }
+    .btn-ember:hover {
+      box-shadow: 0 0 34px rgba(255, 119, 43, 0.75);
+    }
+
+    .btn-parchment {
+      background: linear-gradient(145deg, var(--parchment-light), var(--parchment-dark));
+      color: var(--ink-dark);
+      border: 1px solid #fff2dc;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    }
+    .btn-parchment:hover {
+      background: #f5e5cc;
+    }
+
+    /* ================= PANELS ================= */
+    .panel {
+      background: var(--bg-panel);
+      border: 1px solid var(--border-ember);
+      border-radius: 18px;
+      padding: 26px 22px;
+      margin-bottom: 24px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(10px);
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .section-head h2 {
+      font-family: 'Cinzel', 'Cairo', sans-serif;
+      font-size: 1.25rem;
+      color: var(--ember-glow);
+      letter-spacing: 1.2px;
+    }
+
+    .section-head p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin-top: 3px;
+    }
+
+    /* ================= EVENT DETAILS & ACTIVITIES ================= */
+    .two-col-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 20px;
+    }
+
+    @media (max-width: 720px) {
+      .two-col-grid { grid-template-columns: 1fr; }
+    }
+
+    .event-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      font-size: 0.93rem;
+      color: var(--text-cream);
+    }
+
+    .event-list li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .event-list .bullet {
+      color: var(--laser-red);
+      font-weight: 900;
+    }
+
+    .detail-pill {
+      background: rgba(10, 5, 5, 0.75);
+      border: 1px solid rgba(255, 119, 43, 0.28);
+      border-left: 3px solid var(--ember);
+      border-radius: 10px;
+      padding: 10px 14px;
+      font-size: 0.92rem;
+      color: var(--text-cream);
+    }
+
+    .detail-pill strong {
+      color: var(--ember-glow);
+    }
+
+    .alone-banner {
+      margin-top: 18px;
+      padding-top: 14px;
+      border-top: 1px dashed rgba(255, 119, 43, 0.25);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      font-size: 0.94rem;
+      color: #ffd4a8;
+      font-weight: 600;
+    }
+
+    /* ================= MOUNTAIN ALTITUDE METER ================= */
+    .climb-meter-wrap {
+      background: rgba(8, 4, 4, 0.85);
+      border: 1px solid rgba(255, 119, 43, 0.28);
+      border-radius: 12px;
+      padding: 14px 16px;
+      margin-bottom: 20px;
+    }
+
+    .climb-top-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.88rem;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .altitude-badge {
+      font-family: 'Cairo', sans-serif;
+      color: var(--ember-glow);
+      font-weight: 800;
+      direction: ltr;
+    }
+
+    .progress-track {
+      width: 100%;
+      height: 11px;
+      background: #241310;
+      border-radius: 999px;
+      overflow: hidden;
+      direction: ltr;
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--laser-red), var(--ember), #ffd166);
+      border-radius: 999px;
+      transition: width 0.45s cubic-bezier(0.2, 0.8, 0.2, 1);
+      box-shadow: 0 0 14px rgba(255, 119, 43, 0.75);
+    }
+
+    /* ================= VINTAGE PARCHMENT ACE CARDS ================= */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+
+    @media (max-width: 780px) {
+      .cards-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 440px) {
+      .cards-grid { grid-template-columns: 1fr; }
+    }
+
+    .card-wrap {
+      perspective: 1100px;
+      height: 280px;
+      cursor: pointer;
+    }
+
+    .playing-card {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+      transition: transform 0.65s cubic-bezier(0.22, 0.88, 0.32, 1);
+    }
+
+    .card-wrap.flipped .playing-card {
+      transform: rotateY(180deg);
+    }
+
+    .card-face {
+      position: absolute;
+      inset: 0;
+      backface-visibility: hidden;
+      border-radius: 14px;
+      padding: 13px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.65);
+      overflow: hidden;
+    }
+
+    /* Vintage aged parchment card front matching the poster! */
+    .card-front {
+      background:
+        radial-gradient(circle at 50% 50%, rgba(255, 245, 228, 0.45) 0%, transparent 70%),
+        linear-gradient(155deg, #ebd5b3 0%, #d4ae7d 60%, #b78a54 100%);
+      border: 2px solid #966b3c;
+      color: var(--ink-dark);
+      direction: ltr;
+    }
+
+    .card-front::after {
+      content: "";
+      position: absolute;
+      inset: 7px;
+      border: 1.5px solid rgba(58, 36, 22, 0.22);
+      border-radius: 8px;
+      pointer-events: none;
+    }
+
+    .card-front:hover {
+      border-color: var(--ember-glow);
+      box-shadow: 0 0 26px rgba(255, 119, 43, 0.45);
+    }
+
+    .card-corner {
+      font-family: 'Cinzel', serif;
+      font-weight: 900;
+      font-size: 1.05rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 22px;
+      line-height: 1.05;
+    }
+
+    .card-corner.bottom {
+      align-self: flex-end;
+      transform: rotate(180deg);
+    }
+
+    .suit-crimson { color: var(--ink-red); }
+    .suit-charcoal { color: var(--ink-dark); }
+
+    .card-center {
+      text-align: center;
+      direction: rtl;
+    }
+
+    .card-center-suit {
+      font-size: 3rem;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .card-title-front {
+      font-family: 'Cairo', sans-serif;
+      font-size: 0.98rem;
+      font-weight: 800;
+      color: var(--ink-dark);
+    }
+
+    .card-tap-hint {
+      font-family: 'Cairo', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: #6b3d1e;
+      margin-top: 3px;
+    }
+
+    /* Dark Borderland Card Back */
+    .card-back {
+      transform: rotateY(180deg);
+      border: 2px solid var(--laser-red);
+      background: linear-gradient(155deg, #210c0b 0%, #090505 100%);
+      text-align: center;
+      justify-content: center;
+      gap: 8px;
+      direction: rtl;
+    }
+
+    .card-back .badge-mini {
+      display: inline-block;
+      font-family: 'Cairo', sans-serif;
+      font-size: 0.74rem;
+      font-weight: 800;
+      color: var(--ember-glow);
+    }
+
+    .card-back h4 {
+      font-family: 'Cairo', sans-serif;
+      font-size: 0.98rem;
+      font-weight: 800;
+      color: #fff2dc;
+    }
+
+    .card-back p {
+      font-family: 'Cairo', sans-serif;
+      font-size: 0.81rem;
+      color: #e6d3c0;
+      line-height: 1.52;
+    }
+
+    .card-claim-tag {
+      font-family: 'Cairo', sans-serif;
+      font-size: 0.74rem;
+      color: #fff;
+      background: linear-gradient(90deg, var(--laser-red), var(--ember));
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-weight: 700;
+      display: inline-block;
+      margin-top: 2px;
+    }
+
+    /* ================= PEP TALK BOOSTER ================= */
+    .pep-box {
+      margin-top: 20px;
+      background: rgba(255, 36, 61, 0.07);
+      border: 1px dashed rgba(255, 119, 43, 0.45);
+      border-radius: 12px;
+      padding: 16px 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 14px;
+      direction: rtl;
+    }
+
+    .pep-text {
+      flex: 1;
+      min-width: 220px;
+      font-family: 'Cairo', sans-serif;
+      font-size: 0.96rem;
+      color: #fde8d7;
+      line-height: 1.6;
+    }
+
+    .pep-text small {
+      display: block;
+      color: var(--ember-glow);
+      font-family: 'Cairo', sans-serif;
+      font-weight: 800;
+      font-size: 0.78rem;
+      margin-bottom: 4px;
+    }
+
+    /* ================= REGISTRATION FORM ================= */
+    label {
+      display: block;
+      font-size: 0.87rem;
+      font-weight: 600;
+      color: #ebd5bf;
+      margin-bottom: 7px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    select,
+    textarea {
+      width: 100%;
+      background: #0c0606;
+      border: 1px solid rgba(255, 119, 43, 0.28);
+      border-radius: 10px;
+      color: var(--text-cream);
+      padding: 12px 14px;
+      font-size: 0.95rem;
+      font-family: inherit;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      outline: none;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--ember-glow);
+      box-shadow: 0 0 0 3px rgba(255, 119, 43, 0.2);
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    @media (max-width: 600px) {
+      .form-grid { grid-template-columns: 1fr; }
+    }
+
+    .full-span { grid-column: 1 / -1; }
+
+    .tips-checklist {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 6px;
+    }
+
+    @media (max-width: 550px) {
+      .tips-checklist { grid-template-columns: 1fr; }
+    }
+
+    .check-card {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #0c0606;
+      border: 1px solid rgba(255, 119, 43, 0.24);
+      border-radius: 10px;
+      padding: 11px 13px;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+      font-size: 0.88rem;
+      margin-bottom: 0;
+    }
+
+    .check-card:hover {
+      border-color: var(--ember-glow);
+      background: rgba(255, 119, 43, 0.06);
+    }
+
+    .check-card input {
+      accent-color: var(--ember);
+      width: 17px;
+      height: 17px;
+      cursor: pointer;
+    }
+
+    /* ================= DIGITAL VISA TICKET ================= */
+    #ticketSection {
+      display: none;
+      animation: fadeUp 0.5s ease forwards;
+      margin-bottom: 24px;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .ticket-card {
+      background:
+        radial-gradient(circle at top right, rgba(255, 119, 43, 0.18), transparent 55%),
+        linear-gradient(135deg, #1a0b09 0%, #090505 60%, #1c080c 100%);
+      border: 2px solid var(--ember);
+      border-radius: 18px;
+      padding: 28px 24px;
+      position: relative;
+      box-shadow: 0 0 45px rgba(255, 65, 54, 0.26);
+    }
+
+    .ticket-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px dashed rgba(255, 194, 140, 0.28);
+      padding-bottom: 14px;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .ticket-id {
+      font-family: 'Cinzel', serif;
+      color: #fff;
+      font-weight: 900;
+      font-size: 1rem;
+      background: linear-gradient(90deg, var(--laser-red), var(--ember));
+      padding: 6px 14px;
+      border-radius: 8px;
+    }
+
+    .ticket-details {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+
+    @media (max-width: 500px) {
+      .ticket-details { grid-template-columns: 1fr; }
+    }
+
+    .ticket-field span {
+      display: block;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-muted);
+      margin-bottom: 2px;
+    }
+
+    .ticket-field strong {
+      font-size: 1.02rem;
+      color: #fff;
+    }
+
+    .ticket-quote {
+      background: rgba(255, 255, 255, 0.04);
+      border-left: 3px solid var(--ember-glow);
+      padding: 12px 14px;
+      border-radius: 8px;
+      font-size: 0.88rem;
+      color: #fde8d7;
+      margin-bottom: 16px;
+    }
+
+    .ticket-footer {
+      text-align: center;
+      padding-top: 14px;
+      border-top: 1px dashed rgba(255, 194, 140, 0.28);
+    }
+
+    /* ================= FOOTER ================= */
+    .poster-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 12px 6px 0;
+      border-top: 1px solid rgba(255, 119, 43, 0.2);
+    }
+
+    .dominate-slogan {
+      font-family: 'Cinzel', serif;
+      color: var(--laser-red);
+      font-weight: 900;
+      font-size: clamp(0.82rem, 2.5vw, 1rem);
+      letter-spacing: 1.5px;
+      text-shadow: 0 0 14px rgba(255, 36, 61, 0.45);
+    }
+
+    .union-tag {
+      font-family: 'Cairo', sans-serif;
+      color: var(--text-muted);
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+  </style>
+</head>
+<body>
+
+  <canvas id="confettiCanvas"></canvas>
+  <div class="laser-backdrop"></div>
+
+  <!-- Mountain Silhouette -->
+  <svg class="mountain-bg" viewBox="0 0 1440 320" preserveAspectRatio="none">
+    <path fill="#3d1409" d="M0,320 L170,195 L320,255 L520,85 L710,215 L910,55 L1120,205 L1280,125 L1440,255 L1440,320 Z"></path>
+  </svg>
+
+  <div class="container">
+
+    <!-- ================= HERO ================= -->
+    <header class="hero">
+      <div class="arena-badge">♠ • ZU Engineering ♥</div>
+      <h1 class="hero-headline">MID IS OVER, AND THE JOURNEY HAS JUST BEGUN</h1>
+      <div class="hero-slogan">"It's not over until I win"</div>
+
+      <!-- Custom SVG recreating your poster's Fanned Ace Cards + Spade Climber + Revive Cards -->
+      <div class="poster-art-wrap">
+        <svg class="poster-svg" viewBox="0 0 420 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="parch1" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#f0dcc0"/>
+              <stop offset="100%" stop-color="#c39562"/>
+            </linearGradient>
+            <linearGradient id="skySpade" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#5da1c9"/>
+              <stop offset="55%" stop-color="#e39d66"/>
+              <stop offset="100%" stop-color="#19161a"/>
+            </linearGradient>
+            <clipPath id="spadeClip">
+              <path d="M242 96 C242 96 184 148 184 185 C184 209 203 224 224 221 C232 220 237 215 240 211 L226 244 L258 244 L244 211 C247 215 252 220 260 221 C281 224 300 209 300 185 C300 148 242 96 242 96 Z"/>
+            </clipPath>
+          </defs>
+
+          <!-- Card Left: Ace of Hearts -->
+          <g transform="rotate(-14 140 190)">
+            <rect x="44" y="45" width="128" height="200" rx="10" fill="url(#parch1)" stroke="#8c6239" stroke-width="2"/>
+            <text x="58" y="75" fill="#b91c1c" font-family="Cinzel, serif" font-weight="900" font-size="22">A</text>
+            <text x="59" y="96" fill="#b91c1c" font-size="18">♥</text>
+          </g>
+
+          <!-- Card Middle: Ace of Diamonds -->
+          <g transform="rotate(-4 195 170)">
+            <rect x="115" y="34" width="132" height="208" rx="10" fill="url(#parch1)" stroke="#8c6239" stroke-width="2"/>
+            <text x="130" y="65" fill="#b91c1c" font-family="Cinzel, serif" font-weight="900" font-size="22">A</text>
+            <text x="132" y="86" fill="#b91c1c" font-size="18">♦</text>
+          </g>
+
+          <!-- Card Right: Ace of Spades with Mountain Climber -->
+          <g transform="rotate(11 260 175)">
+            <rect x="180" y="34" width="150" height="232" rx="11" fill="url(#parch1)" stroke="#8c6239" stroke-width="2.2"/>
+            <text x="195" y="66" fill="#231610" font-family="Cinzel, serif" font-weight="900" font-size="25">A</text>
+            <text x="197" y="89" fill="#231610" font-size="20">♠</text>
+            <g transform="rotate(180 307 240)">
+              <text x="298" y="248" fill="#231610" font-family="Cinzel, serif" font-weight="900" font-size="23">A</text>
+              <text x="300" y="270" fill="#231610" font-size="18">♠</text>
+            </g>
+          </g>
+
+          <!-- Spade Window with Mountain & Climber -->
+          <g clip-path="url(#spadeClip)">
+            <rect x="180" y="90" width="125" height="160" fill="url(#skySpade)"/>
+            <!-- Mountain Rock -->
+            <path d="M180 250 L180 155 L220 175 L235 205 L260 250 Z" fill="#171416"/>
+            <!-- Climber Silhouette reaching up -->
+            <circle cx="242" cy="144" r="7" fill="#111"/>
+            <path d="M242 151 L234 179 L222 197 M234 179 L247 202 M238 158 L224 142 M242 156 L256 132" stroke="#111" stroke-width="5.5" stroke-linecap="round"/>
+          </g>
+          <path d="M242 96 C242 96 184 148 184 185 C184 209 203 224 224 221 C232 220 237 215 240 211 L226 244 L258 244 L244 211 C247 215 252 220 260 221 C281 224 300 209 300 185 C300 148 242 96 242 96 Z" stroke="#231610" stroke-width="2" fill="none"/>
+
+          <!-- Floating "REVIVE" Cards Dealt From Above -->
+          <g transform="rotate(-18 228 84)">
+            <rect x="200" y="64" width="52" height="32" rx="4" fill="#f7e3c6" stroke="#231610" stroke-width="1.8"/>
+            <text x="206" y="84" fill="#d94e14" font-family="Cinzel, serif" font-weight="900" font-size="11">revive</text>
+          </g>
+          <g transform="rotate(14 252 90)">
+            <rect x="228" y="72" width="52" height="32" rx="4" fill="#fff2dc" stroke="#ff5722" stroke-width="2"/>
+            <text x="234" y="92" fill="#b91c1c" font-family="Cinzel, serif" font-weight="900" font-size="11">revive</text>
+          </g>
+
+          <!-- STAY TUNED Ember Ribbon -->
+          <rect x="292" y="22" width="112" height="36" rx="8" fill="#1b0a08" stroke="#ff772b" stroke-width="1.5"/>
+          <text x="348" y="45" text-anchor="middle" fill="#ff9a44" font-family="Cinzel, serif" font-weight="900" font-size="13">STAY TUNED</text>
+        </svg>
+      </div>
+
+      <div class="support-message">
+        <strong>Take a Breath:</strong> You made it through the first midterm! Pause, reset, and recharge with us. Whether you crushed the exam or it crushed you—<strong>you're not alone, and we've got your back</strong>.
+        <div class="ar ar-sub">
+          الميدتيرم الأول عدّى بكل ضغطه وتعبه، بس دي مجرد أول خطوة على الجبل مش نهايته. اسند نفسك، اسحب كارت الـ <strong>Revive</strong> بتاعك، وخلينا نكمل الصعود سوا أقوى وأذكى.
+        </div>
+      </div>
+
+      <div class="hero-actions">
+        <a href="#cardsSection" class="btn btn-parchment ar">🃏 افتح كروت الصعود</a>
+        <a href="#registerSection" class="btn btn-ember">⚡ Join the Game &amp; Register</a>
+      </div>
+    </header>
+
+    <!-- ================= EVENT DETAILS & ACTIVITIES ================= -->
+    <section class="panel">
+      <div class="two-col-grid">
+        <div>
+          <h2 style="font-family:'Cinzel', serif; font-size:1.15rem; color:var(--ember-glow); margin-bottom:10px;">
+            🔥 RECHARGE YOUR ENERGY
+          </h2>
+          <p style="font-size:0.86rem; color:var(--text-muted); margin-bottom:12px;">What's waiting for you at Revive?</p>
+          <ul class="event-list">
+            <li><span class="bullet">♠</span><span>Stress-free games &amp; chill vibes</span></li>
+            <li><span class="bullet">♦</span><span>Honest talks &amp; peer support</span></li>
+            <li><span class="bullet">♣</span><span>Coffee, snacks &amp; good company</span></li>
+            <li><span class="bullet">♥</span><span>Motivation boost for what's next</span></li>
+            <li><span class="bullet">★</span><span>Great memories with your friends</span></li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 style="font-family:'Cinzel', serif; font-size:1.15rem; color:var(--ember-glow); margin-bottom:10px;">
+            📅 SAVE THE DETAILS
+          </h2>
+          <p style="font-size:0.86rem; color:var(--text-muted); margin-bottom:12px;">Mark your calendar so you don't miss out!</p>
+          <div style="display:flex; flex-direction:column; gap:10px;">
+            <div class="detail-pill">📅 <strong>Date:</strong> Wednesday</div>
+            <div class="detail-pill">🕒 <strong>Time:</strong> 10:00 AM – 2:00 PM</div>
+            <div class="detail-pill">📍 <strong>Location:</strong> <span class="ar" style="display:inline;">مدرج / قاعة 2د</span></div>
+            <div class="detail-pill">❗ <strong>Bring:</strong> Yourself &amp; your friends!</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="alone-banner">
+        <span>Remember You're Not Alone — It's not over until I win!</span>
+        <span class="ar" style="color:var(--ember-glow); font-size:0.92rem;">مستنيينكم يوم الأربعاء ⚡</span>
+      </div>
+    </section>
+
+    <!-- ================= MOUNTAIN CHECKPOINTS (ARABIC) ================= -->
+    <section id="cardsSection" class="panel ar">
+      <div class="section-head">
+        <div>
+          <h2 style="font-family:'Cairo', sans-serif; font-size:1.35rem; font-weight:800;">🏔️ محطات تسلق الجبل — كروت الـ Ace</h2>
+          <p>اضغط على كل كارت من كروت <strong>Revive</strong> عشان تقلبه، تكتشف نصيحة النجاة، وتكمل صعودك للقمة.</p>
+        </div>
+      </div>
+
+      <!-- Altitude Progress -->
+      <div class="climb-meter-wrap">
+        <div class="climb-top-row">
+          <span id="climbStatusText">نقطة البداية — افتح الـ 4 كروت بالأسفل لتكمل الصعود!</span>
+          <span class="altitude-badge" id="altitudeDisplay">0% • 0 م / 1000 م</span>
+        </div>
+        <div class="progress-track">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+      </div>
+
+      <!-- 4 Vintage Ace Cards (Alice in Borderland Suits) -->
+      <div class="cards-grid">
+        <!-- Ace of Spades -->
+        <div class="card-wrap" onclick="flipCard(this, 0)">
+          <div class="playing-card">
+            <div class="card-face card-front">
+              <div class="card-corner suit-charcoal"><span>A</span><span>♠</span></div>
+              <div class="card-center">
+                <div class="card-center-suit suit-charcoal">♠</div>
+                <div class="card-title-front">إدارة الوقت</div>
+                <div class="card-tap-hint">اضغط لقلب الكارت</div>
+              </div>
+              <div class="card-corner bottom suit-charcoal"><span>A</span><span>♠</span></div>
+            </div>
+            <div class="card-face card-back">
+              <span class="badge-mini">المحطة 01 • 250 متر (القدرة والتحمل)</span>
+              <h4>♠ إدارة الوقت</h4>
+              <p>مش محتاج 25 ساعة في اليوم.. المهم تتعلم تعمل جدول واقعي يسيبلك مساحة تتنفس وتنجز من غير ضغط.</p>
+              <span class="card-claim-tag">✓ تم اجتياز المحطة</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Ace of Diamonds -->
+        <div class="card-wrap" onclick="flipCard(this, 1)">
+          <div class="playing-card">
+            <div class="card-face card-front">
+              <div class="card-corner suit-crimson"><span>A</span><span>♦</span></div>
+              <div class="card-center">
+                <div class="card-center-suit suit-crimson">♦</div>
+                <div class="card-title-front">الملخص الذكي</div>
+                <div class="card-tap-hint">اضغط لقلب الكارت</div>
+              </div>
+              <div class="card-corner bottom suit-crimson"><span>A</span><span>♦</span></div>
+            </div>
+            <div class="card-face card-back">
+              <span class="badge-mini">المحطة 02 • 500 متر (الذكاء)</span>
+              <h4>♦ إزاي تعمل ملخص</h4>
+              <p>بطّل تغرق في 200 سلايد قبل الامتحان.. حوّل شباتر كاملة لورقتين واضحين يثبتوا في دماغك بسرعة.</p>
+              <span class="card-claim-tag">✓ تم اجتياز المحطة</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Ace of Clubs -->
+        <div class="card-wrap" onclick="flipCard(this, 2)">
+          <div class="playing-card">
+            <div class="card-face card-front">
+              <div class="card-corner suit-charcoal"><span>A</span><span>♣</span></div>
+              <div class="card-center">
+                <div class="card-center-suit suit-charcoal">♣</div>
+                <div class="card-title-front">ذاكر بذكاء</div>
+                <div class="card-tap-hint">اضغط لقلب الكارت</div>
+              </div>
+              <div class="card-corner bottom suit-charcoal"><span>A</span><span>♣</span></div>
+            </div>
+            <div class="card-face card-back">
+              <span class="badge-mini">المحطة 03 • 750 متر (التوازن)</span>
+              <h4>♣ اشتغل بذكاء مش بتعب</h4>
+              <p>المذاكرة 10 ساعات وإنت مرهق مش حل.. ركّز على المسائل المهمة، عالج نقط ضعفك، وحافظ على طاقتك.</p>
+              <span class="card-claim-tag">✓ تم اجتياز المحطة</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Ace of Hearts -->
+        <div class="card-wrap" onclick="flipCard(this, 3)">
+          <div class="playing-card">
+            <div class="card-face card-front">
+              <div class="card-corner suit-crimson"><span>A</span><span>♥</span></div>
+              <div class="card-center">
+                <div class="card-center-suit suit-crimson">♥</div>
+                <div class="card-title-front">الاستعداد للامتحان</div>
+                <div class="card-tap-hint">اضغط لقلب الكارت</div>
+              </div>
+              <div class="card-corner bottom suit-crimson"><span>A</span><span>♥</span></div>
+            </div>
+            <div class="card-face card-back">
+              <span class="badge-mini">القمة • 1000 متر (الثبات النفسي)</span>
+              <h4>♥ جاهزية الامتحان</h4>
+              <p>التوتر بيسرق درجات إنت تعبت فيها.. اتعلم روتين هادي ومنظم يدخّلك اللجنة وإنت واثق ومتحكم.</p>
+              <span class="card-claim-tag">✓ وصلت للقمة</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Creative Support Booster -->
+      <div class="pep-box">
+        <div class="pep-text">
+          <small>🔥 رسالة دعم من REVIVE</small>
+          <span id="pepQuote">"حتى أقوى المتسلقين بياخدوا استراحة في منتصف الطريق.. الوقفة عشان تشحن طاقتك جزء من المكسب."</span>
+        </div>
+        <button type="button" class="btn btn-parchment ar" onclick="nextPepTalk()">اسحب رسالة دعم تانية 🃏</button>
+      </div>
+    </section>
+
+    <!-- ================= REGISTRATION FORM ================= -->
+    <section id="registerSection" class="panel">
+      <div class="section-head">
+        <div>
+          <h2>🎟️ CLAIM YOUR SEAT AT REVIVE</h2>
+          <p>Wednesday • 10:00 AM – 2:00 PM • Hall 2د — Save your spot in 30 seconds.</p>
+        </div>
+        <span style="font-size: 1.35rem; letter-spacing: 4px;">♠ ♦ ♣ ♥</span>
+      </div>
+
+      <form id="reviveForm" onsubmit="submitRegistration(event)">
+        <div class="form-grid">
+          <div class="full-span">
+            <label for="fullName">Full Name (الاسم رباعياً) *</label>
+            <input type="text" id="fullName" required placeholder="اكتب اسمك رباعي" />
+          </div>
+
+          <div>
+            <label for="phone">WhatsApp Number (رقم الواتساب) *</label>
+            <input type="tel" id="phone" required placeholder="01XXXXXXXXX" />
+          </div>
+
+          <div>
+            <label for="email">Email Address *</label>
+            <input type="email" id="email" required placeholder="name@example.com" />
+          </div>
+
+          <div>
+            <label for="section">Section No. (رقم السكشن) *</label>
+            <input type="text" id="section" required placeholder="e.g., Section 28" />
+          </div>
+
+          <div>
+            <label for="cardSuit">Which Ace Card are you claiming? *</label>
+            <select id="cardSuit" required>
+              <option value="♠ Spade — Time Management">♠ Ace of Spades — Time Management</option>
+              <option value="♦ Diamond — How to Make a Summary">♦ Ace of Diamonds — How to Make a Summary</option>
+              <option value="♣ Club — Work Smart Not Hard">♣ Ace of Clubs — Work Smart Not Hard</option>
+              <option value="♥ Heart — How to Be Prepared for Exam">♥ Ace of Hearts — How to Be Prepared for Exam</option>
+            </select>
+          </div>
+
+          <div class="full-span">
+            <label>Which tips do you want us to focus on most?</label>
+            <div class="tips-checklist">
+              <label class="check-card">
+                <input type="checkbox" name="tips" value="Time Management" checked />
+                <span>♠ Time Management</span>
+              </label>
+              <label class="check-card">
+                <input type="checkbox" name="tips" value="How to make a summary" />
+                <span>♦ How to make a summary</span>
+              </label>
+              <label class="check-card">
+                <input type="checkbox" name="tips" value="Work smart not hard" />
+                <span>♣ Work smart not hard</span>
+              </label>
+              <label class="check-card">
+                <input type="checkbox" name="tips" value="How to be prepared for exam" />
+                <span>♥ How to be prepared for exam</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="full-span">
+            <label for="notes">What stressed you out most recently, or what should our speakers answer? (Optional)</label>
+            <textarea id="notes" rows="3" placeholder="احكيلنا أكتر مادة أو مشكلة مضايقاك وهنساعدك فيها في الإيفينت..."></textarea>
+          </div>
+
+          <div class="full-span" style="margin-top: 6px;">
+            <button type="submit" class="btn btn-ember" style="width:100%; font-size:1rem; padding:15px;">
+              COMPLETE REVIVE REGISTRATION ⚡
+            </button>
+          </div>
+        </div>
+      </form>
+    </section>
+
+    <!-- ================= DIGITAL REVIVE VISA PASS ================= -->
+    <section id="ticketSection">
+      <div class="ticket-card">
+        <div class="ticket-top">
+          <div>
+            <div style="font-family:'Cinzel', serif; font-weight:900; font-size:1.35rem; letter-spacing:2px; color:var(--ember-glow);">
+              REVIVE BORDERLAND VISA
+            </div>
+            <div style="font-size:0.82rem; color:#f7ebdc;">
+              Wednesday • 10:00 AM – 2:00 PM • Location: 2د
+            </div>
+          </div>
+          <div class="ticket-id" id="ticketId">#RV-0000</div>
+        </div>
+
+        <div class="ticket-details">
+          <div class="ticket-field">
+            <span>Player Name</span>
+            <strong id="tName">—</strong>
+          </div>
+          <div class="ticket-field">
+            <span>Section</span>
+            <strong id="tSection">—</strong>
+          </div>
+          <div class="ticket-field">
+            <span>WhatsApp</span>
+            <strong id="tPhone">—</strong>
+          </div>
+          <div class="ticket-field">
+            <span>Claimed Ace Card</span>
+            <strong id="tSuit" style="color:var(--ember-glow);">—</strong>
+          </div>
+        </div>
+
+        <div class="ticket-quote" id="tQuote">
+          "It's not over until I win — see you at the top!"
+        </div>
+
+        <div class="ticket-footer">
+          <p class="ar" style="font-size:0.95rem; color:#ffd4a8; margin-bottom:14px;">
+            مبروك! مكانك اتحجز في <strong>Revive</strong> 🔥 خد سكرين شوت للكارت ده، ومتنساش تجيب أصحابك يوم الأربعاء الساعة 10 في 2د!
+          </p>
+          <button type="button" class="btn btn-parchment" onclick="registerAnother()">Register Another Friend</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= FOOTER SLOGAN ================= -->
+    <footer class="poster-footer">
+      <div class="dominate-slogan">ENGINEERS DON'T COMPETE, THEY DOMINATE</div>
+      <div class="union-tag ar">#اتحاد_طلاب_هندسة_الزقازيق</div>
+    </footer>
+
+  </div>
+
+  <!-- Supabase JS Client -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script>
+    const SUPABASE_URL = "https://vjzeejmgessodplewmws.supabase.co";
+    const SUPABASE_KEY = "sb_publishable_i88jri4MCXMXL_xC83DUBg_uihkHX-0";
+    const { createClient } = supabase;
+    const supabaseClient = createClient(SUPABASE_URL, SUPABASE_KEY);
+
+    const flippedSet = new Set();
+
+    const pepTalks = [
+      '"حتى أقوى المتسلقين بياخدوا استراحة في منتصف الطريق.. الوقفة عشان تشحن طاقتك جزء من المكسب."',
+      '"محدش بيطلع الجبل في خطوة واحدة.. المهم إنك لسه مكمل ولسه في فرصة تعوّض وتتفوق."',
+      '"درجة ميدتيرم صعبة مش نهاية الحكاية.. دي مجرد بداية لقصة رجوعك الأقوى."',
+      '"اللي فات كان تسخين.. أنت أقوى بكتير من إن امتحان واحد يحدد مستواك أو يكسرك!"',
+      '"إنت عدّيت من أصعب أسابيع فاتت بالفعل.. كمّل صعود وإحنا في ضهرك خطوة بخطوة."',
+      '"مش مطلوب منك الكمال، مطلوب منك متستسلمش. Revive معمول مخصوص عشان يسندك."'
+    ];
+    let pepIndex = 0;
+
+    function nextPepTalk() {
+      pepIndex = (pepIndex + 1) % pepTalks.length;
+      document.getElementById('pepQuote').textContent = pepTalks[pepIndex];
+    }
+
+    function flipCard(el, index) {
+      el.classList.toggle('flipped');
+      flippedSet.add(index);
+
+      const count = flippedSet.size;
+      const percent = count * 25;
+      const meters = count * 250;
+
+      document.getElementById('progressFill').style.width = percent + "%";
+      document.getElementById('altitudeDisplay').textContent = `${percent}% • ${meters} م / 1000 م`;
+
+      const statusText = document.getElementById('climbStatusText');
+      if (count === 4) {
+        statusText.innerHTML = `<strong style="color: var(--ember-glow);">وصلت للقمة! 🔥 جمعت كل كروت الـ Ace الـ 4 — احجز مكانك بالأسفل ليوم الأربعاء!</strong>`;
+      } else {
+        statusText.textContent = `جاري الصعود... فتحت ${count} من 4 كروت نجاة!`;
+      }
+    }
+
+    const suitMessages = {
+      "♠ Spade — Time Management": "♠ Ace of Spades Claimed: Master your hours, build endurance, and watch your grades bounce back.",
+      "♦ Diamond — How to Make a Summary": "♦ Ace of Diamonds Claimed: Pure strategy—turn chaos into crystal-clear notes for Finals.",
+      "♣ Club — Work Smart Not Hard": "♣ Ace of Clubs Claimed: Teamwork + smart effort beats burnout every single time!",
+      "♥ Heart — How to Be Prepared for Exam": "♥ Ace of Hearts Claimed: Calm mind, steady hands—you're walking into the next exam ready to win."
+    };
+
+    async function submitRegistration(e) {
+      e.preventDefault();
+
+      const submitBtn = e.target.querySelector('button[type="submit"]');
+      submitBtn.disabled = true;
+      submitBtn.textContent = "SAVING YOUR VISA...";
+
+      const name = document.getElementById('fullName').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const section = document.getElementById('section').value.trim();
+      const suit = document.getElementById('cardSuit').value;
+      const notes = document.getElementById('notes').value.trim();
+      const tips = Array.from(document.querySelectorAll('input[name="tips"]:checked'))
+        .map(cb => cb.value)
+        .join(", ");
+      const ticketId = "#RV-" + Math.floor(1000 + Math.random() * 9000);
+
+      const { error } = await supabaseClient
+        .from('registrations')
+        .insert([{
+          ticket_id: ticketId,
+          full_name: name,
+          phone: phone,
+          email: email,
+          section: section,
+          chosen_suit: suit,
+          tips: tips,
+          notes: notes
+        }]);
+
+      if (error) {
+        console.error("Supabase error:", error);
+        alert("Error saving: " + (error.message || JSON.stringify(error)));
+        submitBtn.disabled = false;
+        submitBtn.textContent = "COMPLETE REVIVE REGISTRATION ⚡";
+        return;
+      }
+
+      document.getElementById('tName').textContent = name;
+      document.getElementById('tPhone').textContent = phone;
+      document.getElementById('tSection').textContent = section;
+      document.getElementById('tSuit').textContent = suit;
+      document.getElementById('ticketId').textContent = ticketId;
+      document.getElementById('tQuote').textContent = suitMessages[suit] || `"It's not over until I win!"`;
+
+      document.getElementById('registerSection').style.display = 'none';
+      document.getElementById('ticketSection').style.display = 'block';
+      document.getElementById('ticketSection').scrollIntoView({ behavior: 'smooth' });
+
+      launchEmberConfetti();
+    }
+
+    function registerAnother() {
+      document.getElementById('reviveForm').reset();
+      const btn = document.querySelector('#reviveForm button[type="submit"]');
+      btn.disabled = false;
+      btn.textContent = "COMPLETE REVIVE REGISTRATION ⚡";
+      document.getElementById('ticketSection').style.display = 'none';
+      document.getElementById('registerSection').style.display = 'block';
+      document.getElementById('registerSection').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function launchEmberConfetti() {
+      const canvas = document.getElementById('confettiCanvas');
+      const ctx = canvas.getContext('2d');
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      const colors = ['#ff772b', '#ff243d', '#ffd166', '#ecd7b7', '#ffffff'];
+      const particles = Array.from({ length: 75 }, () => ({
+        x: canvas.width / 2,
+        y: canvas.height / 2,
+        vx: (Math.random() - 0.5) * 14,
+        vy: (Math.random() - 0.7) * 14,
+        size: Math.random() * 6 + 3,
+        color: colors[Math.floor(Math.random() * colors.length)],
+        alpha: 1
+      }));
+
+      function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        let alive = false;
+        particles.forEach(p => {
+          p.x += p.vx;
+          p.y += p.vy;
+          p.vy += 0.28;
+          p.alpha -= 0.015;
+          if (p.alpha > 0) {
+            alive = true;
+            ctx.globalAlpha = p.alpha;
+            ctx.fillStyle = p.color;
+            ctx.fillRect(p.x, p.y, p.size, p.size);
+          }
+        });
+        ctx.globalAlpha = 1;
+        if (alive) {
+          requestAnimationFrame(animate);
+        } else {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+        }
+      }
+      animate();
+    }
+  </script>
+</body>
+</html>
