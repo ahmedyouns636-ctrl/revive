@@ -153,22 +153,13 @@
       margin: 14px auto 0;
       background: rgba(24, 12, 10, 0.85);
       border: 1px solid var(--border-ember);
-      border-left: 3px solid var(--laser-red);
+      border-right: 3px solid var(--laser-red);
       border-radius: 12px;
       padding: 16px 20px;
-      text-align: left;
-      line-height: 1.65;
-      color: #f3e4d3;
-      font-size: 0.96rem;
-    }
-
-    .support-message .ar-sub {
-      margin-top: 10px;
-      padding-top: 10px;
-      border-top: 1px dashed rgba(255, 119, 43, 0.25);
-      color: #ffd4a8;
-      font-size: 0.96rem;
       text-align: right;
+      line-height: 1.75;
+      color: #fde8d7;
+      font-size: 1rem;
     }
 
     .hero-actions {
@@ -188,10 +179,9 @@
       padding: 13px 24px;
       border-radius: 10px;
       border: none;
-      font-family: 'Cinzel', 'Cairo', sans-serif;
+      font-family: 'Cairo', 'Cinzel', sans-serif;
       font-weight: 800;
-      font-size: 0.92rem;
-      letter-spacing: 1px;
+      font-size: 0.95rem;
       cursor: pointer;
       text-decoration: none;
       transition: transform 0.15s, box-shadow 0.2s, background 0.2s;
@@ -240,14 +230,14 @@
     }
 
     .section-head h2 {
-      font-family: 'Cinzel', 'Cairo', sans-serif;
-      font-size: 1.25rem;
+      font-family: 'Cairo', 'Cinzel', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 900;
       color: var(--ember-glow);
-      letter-spacing: 1.2px;
     }
 
     .section-head p {
-      font-size: 0.88rem;
+      font-size: 0.9rem;
       color: var(--text-muted);
       margin-top: 3px;
     }
@@ -268,7 +258,7 @@
       display: flex;
       flex-direction: column;
       gap: 10px;
-      font-size: 0.93rem;
+      font-size: 0.95rem;
       color: var(--text-cream);
     }
 
@@ -286,10 +276,10 @@
     .detail-pill {
       background: rgba(10, 5, 5, 0.75);
       border: 1px solid rgba(255, 119, 43, 0.28);
-      border-left: 3px solid var(--ember);
+      border-right: 3px solid var(--ember);
       border-radius: 10px;
       padding: 10px 14px;
-      font-size: 0.92rem;
+      font-size: 0.94rem;
       color: var(--text-cream);
     }
 
@@ -306,9 +296,9 @@
       align-items: center;
       flex-wrap: wrap;
       gap: 8px;
-      font-size: 0.94rem;
+      font-size: 0.96rem;
       color: #ffd4a8;
-      font-weight: 600;
+      font-weight: 700;
     }
 
     /* ================= MOUNTAIN ALTITUDE METER ================= */
@@ -549,8 +539,8 @@
     /* ================= REGISTRATION FORM ================= */
     label {
       display: block;
-      font-size: 0.87rem;
-      font-weight: 600;
+      font-size: 0.88rem;
+      font-weight: 700;
       color: #ebd5bf;
       margin-bottom: 7px;
     }
@@ -610,7 +600,7 @@
       padding: 11px 13px;
       cursor: pointer;
       transition: border-color 0.2s, background 0.2s;
-      font-size: 0.88rem;
+      font-size: 0.9rem;
       margin-bottom: 0;
     }
 
@@ -683,9 +673,7 @@
 
     .ticket-field span {
       display: block;
-      font-size: 0.72rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
+      font-size: 0.75rem;
       color: var(--text-muted);
       margin-bottom: 2px;
     }
@@ -695,9 +683,14 @@
       color: #fff;
     }
 
+    #qrBox img, #qrBox canvas {
+      display: block;
+      margin: 0 auto;
+    }
+
     .ticket-quote {
       background: rgba(255, 255, 255, 0.04);
-      border-left: 3px solid var(--ember-glow);
+      border-right: 3px solid var(--ember-glow);
       padding: 12px 14px;
       border-radius: 8px;
       font-size: 0.88rem;
@@ -753,7 +746,7 @@
 
     <!-- ================= HERO ================= -->
     <header class="hero">
-      <div class="arena-badge">♠ revive is calling • ZU Engineering ♥</div>
+      <div class="arena-badge">♠ Alice in Borderland Edition • ZU Engineering ♥</div>
       <h1 class="hero-headline">MID IS OVER, AND THE JOURNEY HAS JUST BEGUN</h1>
       <div class="hero-slogan">"It's not over until I win"</div>
 
@@ -825,20 +818,16 @@
         </svg>
       </div>
 
-      <div class="support-message ar" style="text-align: right; border-left: 1px solid var(--border-ember); border-right: 3px solid var(--laser-red);">
-  <strong>خُد نفسك:</strong> إنت عدّيت الميدتيرم الأول خلاص! افصل شوية، رتّب أفكارك، واشحن طاقتك معانا. سواءً فرمت الامتحان أو الامتحان هو اللي فرمك—إنت مش لوحدك، وإحنا في ضهرك.
-        <div class="ar ar-sub">
-          الميدتيرم الأول عدّى بكل ضغطه وتعبه، بس دي مجرد أول خطوة على الجبل مش نهايته. اسند نفسك، اسحب كارت الـ <strong>Revive</strong> بتاعك، وخلينا نكمل الصعود سوا أقوى وأذكى.
-        </div>
+      <div class="support-message ar">
+        <strong>خُد نفسك:</strong> إنت عدّيت الميدتيرم الأول خلاص! افصل شوية، رتّب أفكارك، واشحن طاقتك معانا. سواءً فرمت الامتحان أو الامتحان هو اللي فرمك—إنت مش لوحدك، وإحنا في ضهرك.
       </div>
 
       <div class="hero-actions">
         <a href="#cardsSection" class="btn btn-parchment ar">🃏 افتح كروت الصعود</a>
-        <a href="#registerSection" class="btn btn-ember">⚡ Join the Game &amp; Register</a>
+        <a href="#registerSection" class="btn btn-ember ar">⚡ احجز مكانك الآن</a>
       </div>
     </header>
 
-    <!-- ================= EVENT DETAILS & ACTIVITIES ================= -->
     <!-- ================= EVENT DETAILS & ACTIVITIES (ARABIC) ================= -->
     <section class="panel ar">
       <div class="two-col-grid">
@@ -862,18 +851,10 @@
           </h2>
           <p style="font-size:0.9rem; color:var(--text-muted); margin-bottom:12px;">سجلها في جدولك عشان متفوتش اليوم!</p>
           <div style="display:flex; flex-direction:column; gap:10px;">
-            <div class="detail-pill" style="border-left:1px solid rgba(255,119,43,0.28); border-right:3px solid var(--ember);">
-              📅 <strong>اليوم:</strong> الأربعاء
-            </div>
-            <div class="detail-pill" style="border-left:1px solid rgba(255,119,43,0.28); border-right:3px solid var(--ember);">
-              🕒 <strong>الوقت:</strong> 10:00 صباحاً – 2:00 ظهراً
-            </div>
-            <div class="detail-pill" style="border-left:1px solid rgba(255,119,43,0.28); border-right:3px solid var(--ember);">
-              📍 <strong>المكان:</strong> مدرج / قاعة 2ه
-            </div>
-            <div class="detail-pill" style="border-left:1px solid rgba(255,119,43,0.28); border-right:3px solid var(--ember);">
-              ❗ <strong>هتجيب معاك إيه:</strong> نفسك وأصحابك وبس!
-            </div>
+            <div class="detail-pill">📅 <strong>اليوم:</strong> الأربعاء</div>
+            <div class="detail-pill">🕒 <strong>الوقت:</strong> 10:00 صباحاً – 2:00 ظهراً</div>
+            <div class="detail-pill">📍 <strong>المكان:</strong> مدرج / قاعة 2ه</div>
+            <div class="detail-pill">❗ <strong>هتجيب معاك إيه:</strong> نفسك وأصحابك وبس!</div>
           </div>
         </div>
       </div>
@@ -888,12 +869,11 @@
     <section id="cardsSection" class="panel ar">
       <div class="section-head">
         <div>
-          <h2 style="font-family:'Cairo', sans-serif; font-size:1.35rem; font-weight:800;">🏔️ محطات تسلق الجبل — كروت الـ Ace</h2>
+          <h2>🏔️ محطات تسلق الجبل — كروت الـ Ace</h2>
           <p>اضغط على كل كارت من كروت <strong>Revive</strong> عشان تقلبه، تكتشف نصيحة النجاة، وتكمل صعودك للقمة.</p>
         </div>
       </div>
 
-      <!-- Altitude Progress -->
       <div class="climb-meter-wrap">
         <div class="climb-top-row">
           <span id="climbStatusText">نقطة البداية — افتح الـ 4 كروت بالأسفل لتكمل الصعود!</span>
@@ -904,7 +884,6 @@
         </div>
       </div>
 
-      <!-- 4 Vintage Ace Cards (Alice in Borderland Suits) -->
       <div class="cards-grid">
         <!-- Ace of Spades -->
         <div class="card-wrap" onclick="flipCard(this, 0)">
@@ -1001,12 +980,11 @@
       </div>
     </section>
 
-    <!-- ================= REGISTRATION FORM ================= -->
-   <!-- ================= REGISTRATION FORM (ARABIC) ================= -->
+    <!-- ================= REGISTRATION FORM (ARABIC) ================= -->
     <section id="registerSection" class="panel ar">
       <div class="section-head">
         <div>
-          <h2 style="font-family:'Cairo', sans-serif; font-weight:900;">🎟️ احجز مكانك في REVIVE</h2>
+          <h2>🎟️ احجز مكانك في REVIVE</h2>
           <p>الأربعاء • 10:00 صباحاً – 2:00 ظهراً • قاعة 2ه — سجل بياناتك في 30 ثانية.</p>
         </div>
         <span style="font-size: 1.35rem; letter-spacing: 4px; direction:ltr;">♠ ♦ ♣ ♥</span>
@@ -1079,6 +1057,64 @@
         </div>
       </form>
     </section>
+
+    <!-- ================= DIGITAL REVIVE VISA PASS + QR CODE ================= -->
+    <section id="ticketSection" class="ar">
+      <div class="ticket-card">
+        <div class="ticket-top">
+          <div>
+            <div style="font-family:'Cinzel', serif; font-weight:900; font-size:1.35rem; letter-spacing:2px; color:var(--ember-glow);">
+              REVIVE BORDERLAND VISA
+            </div>
+            <div style="font-size:0.86rem; color:#f7ebdc;">
+              الأربعاء • 10:00 صباحاً – 2:00 ظهراً • قاعة 2ه
+            </div>
+          </div>
+          <div class="ticket-id" id="ticketId" style="direction:ltr;">#RV-0000</div>
+        </div>
+
+        <div class="ticket-details">
+          <div class="ticket-field">
+            <span>الاسم</span>
+            <strong id="tName">—</strong>
+          </div>
+          <div class="ticket-field">
+            <span>السكشن</span>
+            <strong id="tSection">—</strong>
+          </div>
+          <div class="ticket-field">
+            <span>رقم الواتساب</span>
+            <strong id="tPhone" style="direction:ltr; display:inline-block;">—</strong>
+          </div>
+          <div class="ticket-field">
+            <span>كارت الـ Ace المختار</span>
+            <strong id="tSuit" style="color:var(--ember-glow);">—</strong>
+          </div>
+        </div>
+
+        <!-- Scannable QR Code Carrying ID + Name + Section -->
+        <div style="text-align:center; margin: 18px 0;">
+          <div style="display:inline-block; background:#f7ebdc; padding:12px; border-radius:14px; border:2px solid var(--ember); box-shadow:0 0 24px rgba(255,119,43,0.3);">
+            <div id="qrBox"></div>
+          </div>
+          <div style="font-size:0.82rem; color:var(--text-muted); margin-top:8px;">
+            امسح الكود عند الدخول • <span id="qrLabel" style="color:var(--ember-glow); font-weight:700; direction:ltr; display:inline-block;">#RV-0000</span>
+          </div>
+        </div>
+
+        <div class="ticket-quote" id="tQuote" style="direction:ltr; text-align:left;">
+          "It's not over until I win — see you at the top!"
+        </div>
+
+        <div class="ticket-footer">
+          <p style="font-size:0.98rem; color:#ffd4a8; margin-bottom:14px;">
+            مبروك! مكانك اتحجز في <strong>Revive</strong> 🔥 خد سكرين شوت للكارت ده بالـ QR Code، ومتنساش تجيب أصحابك يوم الأربعاء الساعة 10 في قاعة 2ه!
+          </p>
+          <button type="button" class="btn btn-parchment ar" onclick="registerAnother()">تسجيل طالب آخر</button>
+        </div>
+      </div>
+    </section>
+
     <!-- ================= FOOTER SLOGAN ================= -->
     <footer class="poster-footer">
       <div class="dominate-slogan">ENGINEERS DON'T COMPETE, THEY DOMINATE</div>
@@ -1087,8 +1123,9 @@
 
   </div>
 
-  <!-- Supabase JS Client (Backup) -->
+  <!-- Libraries: Supabase (Backup) + UTF-8 QRCode Generator -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.1/build/qrcode.min.js"></script>
   <script>
     const GOOGLE_SHEET_URL = "https://script.google.com/macros/s/AKfycbw5KTJBfTgFaggr2DCLbx2tGvQn5gLkVvBHMqNvum4Uz46bj-OpqBrti3du11kbjvtV/exec";
     const SUPABASE_URL = "https://vjzeejmgessodplewmws.supabase.co";
@@ -1140,12 +1177,54 @@
       "♥ Heart — How to Be Prepared for Exam": "♥ Ace of Hearts Claimed: Calm mind, steady hands—you're walking into the next exam ready to win."
     };
 
+    function generateTicketQR(ticketId, name, section) {
+      const qrBox = document.getElementById('qrBox');
+      const qrLabel = document.getElementById('qrLabel');
+      if (qrLabel) qrLabel.textContent = ticketId;
+      if (!qrBox) return;
+      qrBox.innerHTML = "";
+
+      const qrText = `REVIVE VISA\nID: ${ticketId}\nName: ${name}\nSection: ${section}`;
+
+      const loadFallback = () => {
+        qrBox.innerHTML = "";
+        const img = document.createElement('img');
+        img.src = "https://api.qrserver.com/v1/create-qr-code/?size=168x168&charset-source=UTF-8&charset-target=UTF-8&data=" + encodeURIComponent(qrText);
+        img.alt = "Ticket QR Code";
+        img.width = 168;
+        img.height = 168;
+        qrBox.appendChild(img);
+      };
+
+      if (typeof QRCode !== 'undefined' && typeof QRCode.toCanvas === 'function') {
+        const canvas = document.createElement('canvas');
+        qrBox.appendChild(canvas);
+        QRCode.toCanvas(canvas, qrText, {
+          width: 168,
+          margin: 1,
+          color: {
+            dark: "#1a0b09",
+            light: "#f7ebdc"
+          },
+          errorCorrectionLevel: "M"
+        }, function (err) {
+          if (err) {
+            console.error("QR error:", err);
+            loadFallback();
+          }
+        });
+        return;
+      }
+
+      loadFallback();
+    }
+
     async function submitRegistration(e) {
       e.preventDefault();
 
       const submitBtn = e.target.querySelector('button[type="submit"]');
       submitBtn.disabled = true;
-      submitBtn.textContent = "SAVING YOUR VISA...";
+      submitBtn.textContent = "جاري حفظ بياناتك...";
 
       const name = document.getElementById('fullName').value.trim();
       const phone = document.getElementById('phone').value.trim();
@@ -1158,8 +1237,8 @@
         .join(", ");
       const ticketId = "#RV-" + Math.floor(1000 + Math.random() * 9000);
 
+      // 1. Send to Google Sheets (max wait 3s so the ticket always shows)
       try {
-        // 1. Send to Google Sheets
         const sheetData = new URLSearchParams({
           ticket_id: ticketId,
           full_name: name,
@@ -1171,50 +1250,61 @@
           notes: notes
         });
 
-        await fetch(GOOGLE_SHEET_URL, {
-          method: "POST",
-          mode: "no-cors",
-          body: sheetData
-        });
-
-        // 2. Also save backup copy to Supabase
-        if (supabaseClient) {
-          await supabaseClient
-            .from('registrations')
-            .insert([{
-              ticket_id: ticketId,
-              full_name: name,
-              phone: phone,
-              email: email,
-              section: section,
-              chosen_suit: suit,
-              tips: tips,
-              notes: notes
-            }]);
-        }
+        await Promise.race([
+          fetch(GOOGLE_SHEET_URL, {
+            method: "POST",
+            mode: "no-cors",
+            body: sheetData
+          }),
+          new Promise(resolve => setTimeout(resolve, 3000))
+        ]);
       } catch (err) {
-        console.error("Save error:", err);
+        console.error("Google Sheet error:", err);
       }
 
+      // 2. Save backup copy to Supabase in the background (non-blocking)
+      if (supabaseClient) {
+        supabaseClient
+          .from('registrations')
+          .insert([{
+            ticket_id: ticketId,
+            full_name: name,
+            phone: phone,
+            email: email,
+            section: section,
+            chosen_suit: suit,
+            tips: tips,
+            notes: notes
+          }])
+          .then(({ error }) => {
+            if (error) console.error("Supabase error:", error);
+          });
+      }
+
+      // 3. Populate Ticket + QR Code and display immediately
       document.getElementById('tName').textContent = name;
       document.getElementById('tPhone').textContent = phone;
       document.getElementById('tSection').textContent = section;
       document.getElementById('tSuit').textContent = suit;
       document.getElementById('ticketId').textContent = ticketId;
       document.getElementById('tQuote').textContent = suitMessages[suit] || `"It's not over until I win!"`;
+      generateTicketQR(ticketId, name, section);
 
       document.getElementById('registerSection').style.display = 'none';
-      document.getElementById('ticketSection').style.display = 'block';
-      document.getElementById('ticketSection').scrollIntoView({ behavior: 'smooth' });
+      const ticketSec = document.getElementById('ticketSection');
+      ticketSec.style.display = 'block';
+      ticketSec.scrollIntoView({ behavior: 'smooth' });
 
       launchEmberConfetti();
     }
 
     function registerAnother() {
       document.getElementById('reviveForm').reset();
+      const qrBox = document.getElementById('qrBox');
+      if (qrBox) qrBox.innerHTML = "";
       const btn = document.querySelector('#reviveForm button[type="submit"]');
       btn.disabled = false;
-      btn.textContent = "COMPLETE REVIVE REGISTRATION ⚡";
+      btn.textContent = "أكّد حجزك في REVIVE ⚡";
       document.getElementById('ticketSection').style.display = 'none';
       document.getElementById('registerSection').style.display = 'block';
       document.getElementById('registerSection').scrollIntoView({ behavior: 'smooth' });
